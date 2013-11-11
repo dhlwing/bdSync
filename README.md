@@ -1,4 +1,4 @@
 bdSync
 ======
 
-eal-time backup based on baidu net disk and notify-tools
+a file synchronization program based on baidu netdisk and inotify-tools
