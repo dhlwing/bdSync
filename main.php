@@ -73,7 +73,7 @@ usage
     public function uploadFile($file,$pre_dir) {
         //上传文件的目标保存路径，此处表示保存到应用根目录下
         $targetPath = '/apps/'.$this->appname."/".$this->root_dir."/";
-        if($pre_dir) $targetPath = $targetPath . str_replace($pre_dir."/", '', basename($file) );
+        if($pre_dir) $targetPath = $targetPath . str_replace($pre_dir."/", '', dirname($file))."/";
         //要上传的本地文件路径
         $file = $file ? $file : dirname(__FILE__) . '/' . 'config.sample.jpg';
         //文件名称
