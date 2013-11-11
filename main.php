@@ -97,6 +97,7 @@ usage
             
             $returnArr =  json_decode(htmlspecialchars_decode($result,ENT_COMPAT),true);
             if(isset($returnArr['error_msg'])) {
+                echo $file ." upload error,error msg: ". $returnArr['error_msg'];
                 $this->error_log($file ." upload error,error msg: ". $returnArr['error_msg']);
             }
         }
@@ -148,10 +149,10 @@ usage
                    	$this->uploadFile($entry,$this->resource);
                    	echo "upload file ". $entry ." successed \n";
                	}
-           }
+            }
         }
         $d->close();
-        $this->resource = '';
+        //$this->resource = '';
     }
     private function getAccessToken() {
 
