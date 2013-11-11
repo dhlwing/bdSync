@@ -84,6 +84,7 @@ usage
         //echo $access_token;exit;
 
         $pcs = new BaiduPCS($access_token);
+        echo "copy file 2 ".$targetPath . "\n";
 
         if (!file_exists($file)) {
             exit('file '.$file.' not exists');
