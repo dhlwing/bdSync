@@ -21,7 +21,7 @@ if($argc >= 2) {
         case '-D':
             break;
         case '-init_upload':
-        	echo "目录".$source."上传中....\n";
+            echo "目录".$source."上传中....\n";
             if($source && is_dir($source)) {
                 $bdSync->init_upload($source);
             } else {
@@ -102,7 +102,7 @@ usage
             
             $returnArr =  json_decode(htmlspecialchars_decode($result,ENT_COMPAT),true);
             if(isset($returnArr['error_msg'])) {
-                echo $file ." upload error,error msg: ". $returnArr['error_msg'];
+                //echo $file ." upload error,error msg: ". $returnArr['error_msg'];
                 $this->error_log($file ." upload error,error msg: ". $returnArr['error_msg']);
             }
         }
@@ -145,15 +145,15 @@ usage
         if(!$this->resource) $this->resource = $source;
         $d = dir($source);
         while (false !== ($entry = $d->read())) {
-        	if($entry!='.' && $entry!='..') {
-           		$entry = $source.'/'.$entry;
-           		$entry = realpath($entry);
-            	if(is_dir($entry)) {
-                   	$this->init_upload($entry);
+            if($entry!='.' && $entry!='..') {
+                $entry = $source.'/'.$entry;
+                $entry = realpath($entry);
+                if(is_dir($entry)) {
+                    $this->init_upload($entry);
                 } else {
-                   	$this->uploadFile($entry,$this->resource);
-                   	echo "upload file ". $entry ." successed \n";
-               	}
+                    $this->uploadFile($entry,$this->resource);
+                    echo "upload file ". $entry ." successed \n";
+                }
             }
         }
         $d->close();
