@@ -5,7 +5,7 @@ a file synchronization program based on baidu netdisk and inotify-tools
 
 ####Getting and install inotify-tools
 
-######Fedora/Cent os
+#####Fedora/Cent os
 
 inotify-tools is available through the Fedora Extras repository. Just do:
 
