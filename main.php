@@ -1,7 +1,7 @@
 <?php
 define('ROOT_DIR',dirname(__FILE__));
-include ROOT_DIR.'/config.php';
-include ROOT_DIR.'/libs/BaiduPCS.class.php';
+include ROOT_DIR .'/config.php';
+include ROOT_DIR .'/libs/BaiduPCS.class.php';
 
 if($argc >= 2) {
     if(!in_array($argv[1], array('-u','-d','-m','-D','-init_upload'))) {
@@ -61,7 +61,7 @@ usage
     
     public $appname        = 'bdSync';
     public $root_dir       = 'myApp';
-    private $tokenFile     = ROOT_DIR.'/token';
+    private $tokenFile     = ROOT_DIR . '/token';
     
     private $access_token  = ACCESS_TOKEN;
     private $refresh_token = REFRESH_TOKEN;
@@ -199,8 +199,8 @@ usage
 
     }
     private function error_log($msg) {
-        $fp = fopen(ROOT_DIR.'/error.log', 'a');
-        @fwrite($fp, $msg."\n");
+        $fp = fopen(ROOT_DIR . '/error.log', 'a');
+        @fwrite($fp, $msg ."\n");
         fclose($fp);
     }
 }
