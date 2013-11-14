@@ -61,7 +61,8 @@ usage
     
     public $appname        = 'bdSync';
     public $root_dir       = 'myApp';
-    private $tokenFile     = ROOT_DIR . '/token';
+
+    private $tokenFile     = 'token';
     
     private $access_token  = ACCESS_TOKEN;
     private $refresh_token = REFRESH_TOKEN;
@@ -162,7 +163,7 @@ usage
     }
     private function getAccessToken() {
 
-        $tokenFile = $this->tokenFile;
+        $tokenFile = ROOT_DIR."/".$this->tokenFile;
         if(file_exists($tokenFile)) {
             $tokenStr = file_get_contents($tokenFile);
             $arr =  json_decode(htmlspecialchars_decode($tokenStr,ENT_COMPAT),true);
