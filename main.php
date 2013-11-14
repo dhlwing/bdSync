@@ -7,11 +7,12 @@ if($argc >= 2) {
     if(!in_array($argv[1], array('-u','-d','-m','-D','-init_upload'))) {
         bdSync::showHelp();exit;
     }
-    $bdSync = new bdSync;
-    $source = isset($argv[2]) ? $argv[2] : '';
+    $bdSync  = new bdSync;
+    $source  = isset($argv[2]) ? $argv[2] : '';
+    $pre_dir = isset($argv[3]) ? $argv[3] : '';
     switch ($argv[1]) {
         case '-u':
-            $bdSync->uploadFile($source);
+            $bdSync->uploadFile($source,$pre_dir);
             break;
         case '-d':
             $bdSync->deleteFile($source);
@@ -70,7 +71,7 @@ usage
         echo self::$help;
     }
 
-    public function uploadFile($file,$pre_dir) {
+    public function uploadFile($file,$pre_dir='') {
         //上传文件的目标保存路径，此处表示保存到应用根目录下
         $targetPath = '/apps/'.$this->appname."/".$this->root_dir."/";
 
