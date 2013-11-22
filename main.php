@@ -211,7 +211,8 @@ usage
                     $this->init_upload($entry);
                 } else {
                     $this->uploadFile($entry,$this->resource);
-                    echo "upload file ". $entry ." successed \n";
+                    if(DEBUG)
+                        echo "upload file ". $entry ." successed \n";
                 }
             }
         }
@@ -244,7 +245,8 @@ usage
         $tokenArr = json_decode(htmlspecialchars_decode($tokenStr,ENT_COMPAT),true);
         if(isset($device_array['error'])){
             $error = 'OAuth error '.$tokenArr['error'].' : '.$tokenArr['error_description'];
-            echo $error."\n";
+            if (DEBUG)
+                echo $error."\n";
             $this->error_log($error);
             return false;
         }
