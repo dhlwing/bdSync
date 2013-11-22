@@ -5,7 +5,7 @@ include ROOT_DIR .'/config.php';
 include ROOT_DIR .'/libs/BaiduPCS.class.php';
 
 if($argc >= 2) {
-    if(!in_array($argv[1], array('-u','-d','-m','-D','-init','-init_upload'))) {
+    if(!in_array($argv[1], array('-u','-d','-m','-D','-init','-init_upload','-quota'))) {
         bdSync::showHelp();exit;
     }
     $bdSync  = new bdSync;
@@ -21,6 +21,9 @@ if($argc >= 2) {
         case '-m':
             break;
         case '-D':
+            break;
+        case '-quota':
+            $bdSync->getQuota();
             break;
         case '-init':
             $bdSync->init();
@@ -199,6 +202,19 @@ usage
         }
 
     }
+    //获取配额信息
+    public function getQuota() {
+        $access_token = $this->getAccessToken();
+        $pcs = new BaiduPCS($access_token);
+        $quota = $pcs->getQuota();
+        $quotaArr =  json_decode(htmlspecialchars_decode($quota,ENT_COMPAT),true);
+        if(!$quotaArr || isset($quotaArr['error_msg'])) {
+            echo "error for gey quota,try again.\n";
+        } else {
+            echo "Space : " . $this->formatSize(intval($quotaArr['quota']))."\n";
+            echo "Used : " . $this->formatSize( intval( $quotaArr['used']) )."\n";
+        }
+    }
 
     public function init_upload($source) {
         if(!$this->resource) $this->resource = $source;
@@ -271,6 +287,17 @@ usage
         $fp = fopen(ROOT_DIR . '/error.log', 'a');
         @fwrite($fp, date("Y-m-d H:i:s")."\t".$msg ."\n");
         fclose($fp);
+    }
+    private function formatSize($size) {
+        $bytes = array('','K','M','G','T');
+        foreach($bytes as $val)  {
+            if($size > 1024) {
+                $size = $size / 1024;
+            } else {
+                break;
+            }
+        }
+        return round($size, 1)." ".$val;
     }
 }
 
