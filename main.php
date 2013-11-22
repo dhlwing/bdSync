@@ -158,14 +158,23 @@ usage
         }
 
     }
-    public function deleteFile($file) {
-        $file = '/apps/'.$this->appname."/".$this->root_dir."/".$file."/";
+    public function deleteFile($file,$pre_dir) {
+        $targetPath = '/apps/'.$this->appname."/".$this->root_dir."/";
+
+        if($pre_dir) $file = $targetPath . str_replace($pre_dir."/", '', $file);
+        //$targetPathArr = explode('/', $targetPath);
+        //array_pop($targetPathArr);
+        //$file = implode('/', $targetPathArr) . "/";
         $access_token = $this->getAccessToken();
         $pcs = new BaiduPCS($access_token);
         $result = $pcs->deleteSingle($file);
         $returnArr =  json_decode(htmlspecialchars_decode($result,ENT_COMPAT),true);
         if(isset($returnArr['error_msg'])) {
             $this->error_log($file ." delete error,error msg: ". $returnArr['error_msg']);
+        } else {
+            if(DEBUG) {
+                echo "file ".$file ." delete successed\n";
+            }
         }
     }
     public function mkdir($path) {
