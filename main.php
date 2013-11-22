@@ -62,6 +62,7 @@ usage
         -u ：  上传文件 (upload file to baidu netdisk)
         -init: 初始化 授权访问 获取权限
         -init_upload:上传目录,后面跟目录路径 如-init_upload ~/Desktop/soft/
+        -quota: 获取空间配额信息
         -d ：  删除文件 (delete file)
         -m ：  创建目录 (make dir)
         -D ：  删除目录 (remove dir)
