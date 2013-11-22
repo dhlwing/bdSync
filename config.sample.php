@@ -1,5 +1,6 @@
 <?php
 
+define('DEBUG',1);
 define('API_KEY','');
 define('SEC_KEY','');
 //根据自己获取的值填写
