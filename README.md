@@ -28,11 +28,11 @@ inotify-tools is available in Debian’s official repositories. You can install 
       >notice：
       use `which php` to find where is the php installed
 
-3. Use browser to get access_token by what you should to do
-4. Modify notify.sh to monitor the dir what you want to sync to your baidu netdisk and use this command
+3. Use browser to allowed bdSync have permission to visite your baidu netdisk
+4. Modify notify.sh to monitor the dir what you want to sync to your baidu netdisk,after that, use this command
     	
     	nohup ./notify.sh & 
-5. for more infomation ,type this command:
+5. for more infomation,type this command:
 
 		php ./main.php -h
     	
