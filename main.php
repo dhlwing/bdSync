@@ -217,8 +217,8 @@ usage
         }
     }
 
-    public function init_upload($source) {
-        if(!$this->resource) $this->resource = $source;
+    public function init_upload($source,$pre_dir = '') {
+        if(!$this->resource) $this->resource = $pre_dir ? $pre_dir : $source;
         $d = dir($source);
         while (false !== ($entry = $d->read())) {
             if($entry!='.' && $entry!='..') {
