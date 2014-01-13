@@ -31,7 +31,7 @@ if($argc >= 2) {
         case '-init_upload':
             echo "目录".$source."上传中....\n";
             if($source && is_dir($source)) {
-                $bdSync->init_upload($source);
+                $bdSync->init_upload($source,$pre_dir);
             } else {
                 exit('dir '.$source." not exists \n");
             }
