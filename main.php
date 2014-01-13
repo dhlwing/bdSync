@@ -128,7 +128,7 @@ usage
         $targetPathArr = explode('/', $targetPath);
         array_pop($targetPathArr);
         $targetPath = implode('/', $targetPathArr) . "/";
-        $targetPath = realpath($targetPath);
+        //$targetPath = realpath($targetPath);
         //要上传的本地文件路径
         $file = $file ? $file : dirname(__FILE__) . '/' . 'config.sample.jpg';
         //文件名称
