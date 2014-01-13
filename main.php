@@ -225,7 +225,7 @@ usage
                 $entry = $source.'/'.$entry;
                 $entry = realpath($entry);
                 if(is_dir($entry)) {
-                    $this->init_upload($entry);
+                    $this->init_upload($entry,$this->resource);
                 } else {
                     $this->uploadFile($entry,$this->resource);
                     if(DEBUG)
